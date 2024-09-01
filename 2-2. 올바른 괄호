@@ -1,0 +1,21 @@
+# 92.3/100 점
+
+def solution(s):
+    answer = False
+    if s.count("(") == s.count(")"):
+        if s[0]=="(" and s[-1]==")":
+            answer = True
+    
+    return answer
+
+
+# def solution(s):
+#     if s.count("(") != s.count(")"):
+#         answer = False
+#     else:
+#         if s[0]=="(" and s[-1]==")":
+#             answer = True
+#         else:
+#             answer = False
+    
+#     return answer
