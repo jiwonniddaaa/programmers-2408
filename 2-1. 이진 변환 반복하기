@@ -1,0 +1,22 @@
+# 이진수로 만들기 실패했어요
+
+def solution(s):
+    a = 0   # 이진 변환 횟수
+    b = 0   # 제거한 0의 수
+    
+    while s != '1':
+        b += s.count('0')
+        c = len(s)-b   # 제거 후 길이
+        s = ""
+        
+        if c != 1:   # 이진 변환 결과 만들기 
+            if c%2==0:
+                s.append("1")   
+            else: 
+                s.append("0")
+            c = c//2
+            
+        a += 1
+                
+    answer = [a, b]
+    return answer
