@@ -1,9 +1,20 @@
-# 92.3/100 점
-
 def solution(s):
-    answer = False
-    if s.count("(") == s.count(")"):
-        if s[0]=="(" and s[-1]==")":
-            answer = True
+    answer = True
+    
+    open = 0
+    close = 0
+    i = 0
+    
+    for i in range(i ,len(s)):
+        if s[i] == "(":
+            open += 1
+        elif s[i] == ")":
+            close+= 1
+            
+        if open < close:
+            return False
+    
+    if open != close:
+        answer = False
     
     return answer
