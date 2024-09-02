@@ -7,15 +7,3 @@ def solution(s):
             answer = True
     
     return answer
-
-
-# def solution(s):
-#     if s.count("(") != s.count(")"):
-#         answer = False
-#     else:
-#         if s[0]=="(" and s[-1]==")":
-#             answer = True
-#         else:
-#             answer = False
-    
-#     return answer
