@@ -1,0 +1,14 @@
+def solution(n):
+    binary = bin(n)[2:]   # 주어진 n을 이진수로 변환
+    
+    i = n + 1   # n보다 하나 큰 수부터 i에 대입
+    while True:
+        new_bin = bin(i)[2:]
+        # binary의 1의 개수와 new_bin의 1의 개수가 같을 때 정답 도출
+        if new_bin.count("1") == binary.count("1"):
+            answer = i
+            break
+        else: 
+            i += 1            
+    
+    return answer
