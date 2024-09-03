@@ -1,14 +1,14 @@
 def solution(n):
-    answer = 0
+    answer = 1
     
     # i부터 j까지 더하는 반복문
-    for i in range (1, n+1):
+    for i in range (1, n//2+1):
         sum = 0   # 합계 리셋
         for j in range(i, n+1):
             sum += j
             if sum == n:   # 합계가 n과 같다면 answer에 1 더하고 다음 i로 넘어가기
                 answer += 1
-                break
+                # break
             if sum > n:   # 합계가 n보다 크다면 다음 i로 넘어가기 
                 break
         
