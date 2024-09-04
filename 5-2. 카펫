@@ -1,0 +1,25 @@
+def solution(brown, yellow):
+    
+    # brwon + yellow는 가로(x)*세로(y)이므로
+    # brwon + yellow의 약수 리스트를 만들어 준다. 
+    # x > y이므로 (역순 저장)
+    lst = []
+    for x in range(brown//2, 0, -1): 
+        if (brown + yellow) % x == 0:
+            lst.append(x)
+    # print(lst) : 리스트 확인용 
+    
+    
+    # 위 약수 중 brown = 2(x+y) - 4 을 만족하는 x, y를 찾는다.
+    for char in lst:
+        x = char
+        y = (brown+yellow) // char
+        if  brown == (2 * (x + y) - 4) :
+            return [x, y]
+    
+
+
+# x = 0, y = 0   # 가로, 세로
+# brown + yellow = x * y
+# brown = 2(x+y) - 4
+# yellow = (x-2)(y-2)
