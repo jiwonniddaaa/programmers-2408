@@ -1,0 +1,9 @@
+def solution(n,a,b):
+    answer = 0
+    
+    # i번째 라운드에서 만난다 (몇 번째 라운드에서 만날지 찾기)
+    for i in range(1, n+1):
+        j = 2**i
+        if (a-1)//j == (b-1)//j:
+            return i
+        
