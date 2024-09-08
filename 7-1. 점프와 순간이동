@@ -1,0 +1,14 @@
+def solution(n):
+    energy = 1   # 0에서 1로 가는 건 디폴트
+    
+    # n에서 0으로 가는 거라고 생각
+    while n != 1:
+        # 짝수라면 절반만큼 순간이동
+        if n % 2 == 0:
+            n = n//2
+        # 홀수라면 1을 빼고 (그럼 짝수가 되니까) 순간이동
+        else:
+            n -= 1
+            energy += 1
+        
+    return energy
