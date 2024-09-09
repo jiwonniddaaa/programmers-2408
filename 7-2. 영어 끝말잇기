@@ -1,3 +1,17 @@
+### 코드 최적화 (3) : return 간략화 ###
+def solution(n, words):
+
+    for i in range(len(words)):
+        # 중복 발생  or  앞사람의 마지막 글자와 뒷사람의 첫 글자가 다를 경우
+        if words[i] in words[:i] or (i > 0 and words[i-1][-1] != words[i][0]):
+            return [i % n+1, i//n +1]
+        
+    # 아무도 탈락하지 않은 경우
+    else:   
+        return [0, 0] 
+
+
+
 ### 코드 최적화 (2) : lst 삭제 ###
 def solution(n, words):
 
