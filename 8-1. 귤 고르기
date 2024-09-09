@@ -1,0 +1,18 @@
+def solution(k, tangerine):
+    
+    # 원소 별 개수 세기 - 딕셔너리
+    count = {}
+    for i in tangerine:
+        try: count[i] += 1
+        except: count[i] = 1
+    
+    count = list(count.values())
+    count.sort(reverse=True)   # count = sorted(count, reverse=True) 와 같은 식 
+    # print(count)
+    
+    # 원소를 내림차순으로 더해가며 그 수가 k보다 크거나 같아질 때 끝내기 
+    x = 0
+    for i in range(len(count)):
+        x += count[i]
+        if x >= k:
+            return i+1
