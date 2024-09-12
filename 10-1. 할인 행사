@@ -1,0 +1,14 @@
+def solution(want, number, discount):
+    answer = 0
+    
+    for j in range(len(discount)-9):
+        temp_number = number[:]   # 얕은 복사(number)만 하면 틀림 
+        for i in range(j, j+10):
+            if discount[i] in want:
+                index = want.index(discount[i])
+                if temp_number[index] != 0: 
+                    temp_number[index] -= 1
+        if not any(temp_number) : answer += 1   
+        # any() : 이터러블 안에 참인 값이 하나라도 있을 경우 True 반환
+        
+    return answer
