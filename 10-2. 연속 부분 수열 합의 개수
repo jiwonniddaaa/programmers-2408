@@ -1,0 +1,14 @@
+def solution(elements):
+    lst = set()   # set : 중복 방지 
+    n = len(elements)
+    
+    for i in range(1, n+1):   # 길이가 i인 부분 수열
+        for j in range(n):   # 시작점 : j
+            answer = 0
+            for k in range(i):
+                l = k + j 
+                if l >= n: l -= n
+                answer += elements[l]
+            lst.add(answer)
+            
+    return len(lst) 
