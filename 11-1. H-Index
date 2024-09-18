@@ -1,0 +1,12 @@
+def solution(citations):
+    i = 1
+    
+    while True:
+        num = 0
+        for j in range(len(citations)):
+            if citations[j] >= i:
+                num += 1
+        if num == i: 
+            return num
+        i += 1
+    
