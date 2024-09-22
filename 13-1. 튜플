@@ -1,0 +1,15 @@
+def solution(s):
+    answer = []
+    s = s[2:-2]  # 맨 앞의 {{와 맨 뒤의 }} 제거
+    s = [set(map(int, x.split(','))) for x in s.split('},{')]   # 파싱
+    
+    # ss = sorted(s, key=len)
+    s.sort(key=len)   # 원소 개수 순서대로 정렬 
+    
+    for i in range(len(s)):
+        # s[i]를 돌면서 answer과 겹치는 경우 찾기
+        for num in s[i]:
+            if num not in answer:   # 근데 중복 발생 가능도 관리해야 함
+                answer.append(num)
+                
+    return answer
