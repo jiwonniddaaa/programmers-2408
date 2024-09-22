@@ -1,0 +1,13 @@
+def solution(n, left, right):
+    # array = [[0 for i in range(n)] for i in range(n)]
+    array = [[0] * n for i in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            if i <= j:
+                array[i][j] = j+1
+            else:
+                array[i][j] = i+1
+    lst = sum(array, [])
+    
+    return lst[left:right+1]
