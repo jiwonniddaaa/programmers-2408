@@ -1,4 +1,18 @@
 def solution(n, left, right):
+    array = []
+    
+    for i in range(left, right+1):
+        row = i // n + 1
+        column = i % n + 1
+        array.append(max (row, column))
+    
+    return array
+
+
+
+### 2차원 배열 생성 -> 1차원으로 변경 후 슬라이싱 : 시간 초과 ###
+
+def solution(n, left, right):
     # array = [[0 for i in range(n)] for i in range(n)]
     array = [[0] * n for i in range(n)]
     
