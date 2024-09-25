@@ -1,0 +1,26 @@
+def solution(cacheSize, cities):
+    answer = 0
+    n = cacheSize
+    lst = []
+    
+    # 도시 이름을 전부 소문자로 변환하기
+    for i in range(len(cities)):
+        cities[i] = cities[i].lower()
+        
+    # 캐시 크기가 0이라면 모두 cache miss (5)
+    if n == 0:
+        return 5 * len(cities)
+        
+    # LRU 알고리즘 구현하기
+    for char in cities:
+        if char in lst:
+            lst.remove(char)
+            lst.append(char)
+            answer += 1
+        else:
+            if len(lst) == n:
+                lst.pop(0)
+            lst.append(char)
+            answer += 5
+        
+    return answer
