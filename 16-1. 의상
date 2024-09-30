@@ -1,0 +1,26 @@
+def solution(clothes):
+    answer = 1
+    
+    # 딕셔너리 만들기
+    dic = {}
+    for i in range(len(clothes)):
+        dic[clothes[i][0]] = clothes[i][1]
+    print(dic)
+    
+    # 의상의 종류 가짓수 구하기
+    lst = []
+    for i in range(len(clothes)):
+        if clothes[i][1] not in lst:
+            lst.append(clothes[i][1])
+    print(lst)
+    
+    # 조합 계산하기
+    for j in range(len(lst)):  
+        n = 0
+        for k, v in dic.items():
+            if v == lst[j]:
+                n += 1
+        answer *= n + 1
+    answer -= 1
+    
+    return answer
