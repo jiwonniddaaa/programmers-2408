@@ -1,0 +1,25 @@
+def solution(k, dungeons):
+    answer = 0
+    # 최소 피로도를 기준으로 역순 정렬
+    dungeons.sort(key=lambda x: x[0], reverse = True)
+    
+    i = 0
+    while True and i < len(dungeons):
+        # k가 최소피로도보다 작음 (실행 불가능)
+        if i > 0 and k < dungeons[i][0]:
+            i -= 1
+            k += dungeons[i][1]
+            dungeons.append(dungeons[i])
+            dungeons.pop(i)
+            # 연속 두번 최소피로도
+            if k < dungeons[i][0]:
+                False
+            
+        # k가 최소피로도보다 큼 (실행 가능)
+        if k >= dungeons[i][0]:
+            # k가 소모피로도보다 큼
+            if k >= dungeons[i][1]:
+                k -= dungeons[i][1]
+        i += 1
+    
+    return i
