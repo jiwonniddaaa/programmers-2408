@@ -1,0 +1,19 @@
+def solution(k, dungeons):
+    visit = [False] * len(dungeons)
+    max_depth = 0
+    
+    def dfs(cur, tired, depth):
+        visit[cur] = True
+        nonlocal max_depth 
+        tired -= dungeons[cur][1]
+        for i in range(len(dungeons)):
+            if visit[i] == False and dungeons[i][0] <= tired:
+                dfs(i, tired, depth + 1)
+        if depth > max_depth: max_depth = depth
+        visit[cur] = False
+    
+    for i in range(len(dungeons)):
+        if k >= dungeons[i][0]:
+            dfs(i, k, 1)
+    
+    return max_depth
