@@ -1,0 +1,14 @@
+def solution(numbers, target):
+    idx = curr = 0
+    
+    def dfs(number, target, current, index):
+        if index == len(number):
+            if current == target:
+                return 1
+            else: return 0
+        
+        return dfs(number, target, current + number[index], index + 1)\
+                + dfs(number, target, current - number[index], index + 1)
+    
+    answer = dfs(numbers, target, idx, curr)
+    return answer
