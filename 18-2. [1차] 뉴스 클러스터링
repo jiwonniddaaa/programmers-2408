@@ -1,35 +1,28 @@
 def solution(str1, str2):
-    str1 = str1.lower()
-    str2 = str2.lower()
-    answer = 0
     new_str = []
     
     def lst(origin_str, new_str):
         new_str = []
         for i in range(len(origin_str)-1):
-            scope = origin_str[i:i+2]
-            # 영문자가 맞는 경우만
-            if all('a' <= char <= "z" or 'A' <= char <='Z' for char in scope):   
+            scope = origin_str[i:i+2].lower()
+            if scope.isalpha():   # 영문자가 맞는 경우만
                 new_str.append(scope)
         return new_str
     
     str11 = lst(str1, new_str)
     str22 = lst(str2, new_str)
     
-    # 교집합
-    inter = 0
+    inter = 0   # 교집합
     copy_str22 = str22[:]
     for i in range(len(str11)):
         if str11[i] in copy_str22:
             inter += 1
             copy_str22.remove(str11[i])
     
-    # 합집합
-    union = len(str11) + len(str22) - inter
+    union = len(str11) + len(str22) - inter   # 합집합
     
     if not union:   # 합집합(분모)가 0인 경우
         return 65536
-    
-    answer = inter/union
+    answer = inter/union   # else
     
     return int(answer * 65536)
