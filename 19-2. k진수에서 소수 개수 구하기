@@ -1,0 +1,28 @@
+def knum(n, k):   # k진수 만들기
+    k_n = ""
+    while n > 0:
+        k_n = str(n % k) + k_n
+        n = n // k
+    return k_n
+
+def is_prime(num):   # 소수인지 판별
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):   # range 함수에는 정수만
+        if num % i == 0:
+            return False
+    return True
+    
+def solution(n, k):
+    answer = 0
+    
+    lst = knum(n, k)
+    lst = lst.split("0")
+    print(lst)
+    
+    for char in lst:
+        if char and char != "1":
+            if is_prime(int(char)):
+                answer += 1
+    
+    return answer
