@@ -1,0 +1,20 @@
+def Sn(n):
+    # 공비가 5인 등비수열의 합
+    return 5 * (5 ** (4-n) - 1) // 4
+
+def solution(word):
+    answer = 0
+    
+    for i in range(len(word)):
+        if word[i] == "A":
+            answer += 1
+        elif word[i] == "E":
+            answer += 2 + Sn(i)
+        elif word[i] == "I":
+            answer += 3 + 2 * Sn(i)
+        elif word[i] == "O":
+            answer += 4 + 3 * Sn(i)
+        elif word[i] == "U":
+            answer += 5 + 4 * Sn(i)
+    
+    return answer
