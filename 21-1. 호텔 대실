@@ -1,0 +1,29 @@
+def change(times):
+    hour, minute = map(int, times.split(":"))
+    time = hour * 60 + minute
+    return time
+
+def solution(book_time):
+    room = []
+    
+    # 시간을 분 단위로 변환하기
+    for i in range(len(book_time)):
+        start = change(book_time[i][0])
+        end = change(book_time[i][1])
+        book_time[i] = (start, end)
+    book_time.sort(key=lambda x: x[0]) # 정렬
+    
+    for start, end in book_time:
+        assigned = False 
+        
+        for j in range(len(room)):
+            if room[j] <= start:
+                room[j] = end + 10
+                assigned = True
+                break
+        
+        if not assigned:
+            room.append(end + 10)
+    
+    answer = len(room)
+    return answer
