@@ -1,0 +1,16 @@
+def solution(operations):
+    answer = []
+    
+    for char in operations:
+        if char[0] == "I":
+            answer.append(int(char[2:]))
+            answer.sort(reverse = True)
+        elif answer and char == "D -1":   # 최솟값 삭제
+            answer.pop()   # answer.remove(min(answer))
+        elif answer and char == "D 1":    # 최댓값 삭제
+            answer.pop(0)   # answer.remove(max(answer))
+    
+    if not answer:
+        return [0, 0]
+    else:
+        return [answer[0], answer[-1]]
