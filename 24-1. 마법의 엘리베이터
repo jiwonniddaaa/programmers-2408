@@ -1,0 +1,16 @@
+def solution(storey):
+    result = 0
+    storey = list(str(storey))
+    
+    for i in range(len(storey)-1, -1, -1):
+        num = int(storey[i])
+        if 0 <= num < 5 or (num == 5 and (i == 0 or int(storey[i-1]) < 5)):
+            result += num
+        elif 5 <= num <= 10:
+            result += (10 - num)
+            if i > 0:
+                storey[i-1] = str(int(storey[i-1]) + 1)
+            elif i == 0:
+                result += 1
+        print(result)
+    return result
