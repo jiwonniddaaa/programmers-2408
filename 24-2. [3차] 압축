@@ -1,0 +1,20 @@
+def solution(msg):
+    answer = []
+    num = [chr(i) for i in range(65, 91)]   # 초기 사전 (A-Z)
+    
+    def find(index):
+        global j
+        j = 1  
+        while index + j <= len(msg) and msg[index:index + j] in num:
+            j += 1
+        return num.index(msg[index : index + j - 1]) 
+    
+    i = 0
+    while i < len(msg):
+        w = find(i)         # 현재 입의 색인번호
+        answer.append(w + 1)    # 압축 리스트 추가
+        if i + j - 1  < len(msg):
+            num.append(msg[i : i + j])    # 사전 추가
+        i += j - 1
+        
+    return answer
