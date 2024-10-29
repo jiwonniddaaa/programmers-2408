@@ -1,0 +1,14 @@
+def solution(n, t, m, p):
+    answer = '0'
+    form = "0123456789ABCDEF"
+
+    for num in range(1, m * t):
+        result = ""
+        while num > 0:
+            remainder = num % n     # 나머지
+            num = num // n          # 몫
+            result += form[remainder] # 나머지 위치로 슬라이싱
+        
+        answer += result[::-1]        
+    
+    return answer[p-1::m][:t]
