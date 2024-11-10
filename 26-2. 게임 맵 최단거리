@@ -1,0 +1,25 @@
+from heapq import heappush, heappop
+
+def solution(maps):
+    row, col = len(maps), len(maps[0])
+    maps = [[float("inf") if maps[r][c] else 0
+            for c in range(col)] for r in range(row)]
+    
+    maps[0][0] = 1
+    Queue = []
+    heappush(Queue, (1, 0, 0))  # 몇 번째 칸, row, col
+    # heap는 순차적으로 저장해주기때문에 단순하기보다 복잡한 미로에서 용이 
+    
+    while Queue:
+        cv, cr, cc = heappop(Queue)
+        for rd, cd in ((-1, 0), (0, 1), (1, 0), (0, -1)):
+            nr, nc = cr + rd, cc + cd
+            if nr in range(row) and nc in range(col) and maps[nr][nc]:
+                if cv + 1 < maps[nr][nc]:
+                    maps[nr][nc] = cv + 1
+                    heappush(Queue, (maps[nr][nc], nr, nc))       
+                
+    if maps[row-1][col-1] == float("inf"):
+        return -1
+    else: return maps[row-1][col-1]
+        
