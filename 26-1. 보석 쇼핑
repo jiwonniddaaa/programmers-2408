@@ -1,0 +1,20 @@
+def solution(gems):
+    left = 0    # 왼쪽 포인터 
+    min_len = len(gems)   
+    buy = []
+    result = [1, len(gems)] 
+    
+    num = set()   # 구해야하는 원소를 다 포함한 set 만들기
+    for gem in gems: 
+        num.add(gem)
+        
+    for right in range(len(gems)):
+        buy.append(gems[right])
+        while all(gem in buy for gem in num):
+            if min_len > len(buy):
+                min_len = len(buy)
+                result = [left+1, right+1]
+            left += 1
+            buy.pop(0)
+    
+    return result
